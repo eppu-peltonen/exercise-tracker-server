@@ -4,8 +4,6 @@ const app = express()
 const exerciseRouter = require('./controllers/exercises')
 const middleware = require('./utils/middleware')
 
-//Tähän ehkä DB connect?
-
 app.use(middleware.requestLogger)
 
 //Api route middlewares

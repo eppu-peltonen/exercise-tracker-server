@@ -1,5 +1,5 @@
 node_modules
 .env
 
-#Ignored until dev notes are solved
-README.md
+#Dev notes
+NOTES.md
