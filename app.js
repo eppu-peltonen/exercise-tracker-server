@@ -4,6 +4,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const exerciseRouter = require('./controllers/exercises')
 const usersRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
 const middleware = require('./utils/middleware')
 
 const app = express()
@@ -15,7 +16,7 @@ app.use(middleware.requestLogger)
 //Api route middlewares
 app.use('/api/exercises', exerciseRouter)
 app.use('/api/users', usersRouter)
-
+app.use('/api/login', loginRouter)
 app.use(middleware.unknownEndpoint)
 
 module.exports = app
