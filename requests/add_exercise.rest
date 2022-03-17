@@ -3,7 +3,7 @@ Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVwcHUiLCJpZCI6MiwiaWF0IjoxNjQ3NTEzNDQ5LCJleHAiOjE2NDc1MTcwNDl9.8A0m6guR74FgnDz7aHAZBh-HqBAtsWlFH3Q1XnOy_RE
 
 {
-  "sport": "Running",
+  "sport": "Skiing",
   "start_time": "2022-03-17 17:50",
   "duration": "01:00",
   "distance": "10.5",

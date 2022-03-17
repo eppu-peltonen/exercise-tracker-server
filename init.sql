@@ -3,7 +3,7 @@ create table users (
   username varchar(50) not null,
   fname varchar(50) not null,
   lname varchar(50) not null,
-  passwordhash varchar(50) not null
+  passwordhash varchar(255) not null
 );
 
 create table exercises (
