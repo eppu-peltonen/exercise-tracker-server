@@ -1,11 +1,14 @@
 const config = require('./utils/config')
 const express = require('express')
-const app = express()
 const cors = require('cors')
+const bodyParser = require('body-parser')
 const exerciseRouter = require('./controllers/exercises')
 const usersRouter = require('./controllers/users')
 const middleware = require('./utils/middleware')
 
+const app = express()
+
+app.use(bodyParser.json())
 app.use(cors())
 app.use(middleware.requestLogger)
 

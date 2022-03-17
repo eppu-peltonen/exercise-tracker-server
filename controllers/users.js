@@ -1,4 +1,4 @@
-const brypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
 const config = require('../utils/config')
 
@@ -10,12 +10,10 @@ usersRouter.post('/', async (req, res) => {
   //Salasana tulee req.bodysta ja täällä luodaan hash joka tallennetaan kantaan
   const { username, fname, lname, password } = req.body
 
-  console.log(username)
-
-  if (body.password === undefined) {
+  if (password === undefined) {
     return res.status(400).json({error: 'password is missing'})
   }
-  if (body.password.length < 4) {
+  if (password.length < 4) {
     return res.status(400).json({error: 'password is too short'})
   }
 
@@ -30,10 +28,12 @@ usersRouter.post('/', async (req, res) => {
         throw error
       }
       const savedUser = result.rows[0]
-      res.status(201).json({status: 'success', message: 'User added.', savedUser})
+      res.status(201).json({
+        status: 'success',
+        message: 'User added.',
+        user: savedUser})
     }
   )
-  
 })
 
 module.exports = usersRouter
