@@ -1,6 +1,6 @@
 POST http://localhost:3001/api/exercises
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVwcHUiLCJpZCI6MiwiaWF0IjoxNjQ3NTEzNDQ5LCJleHAiOjE2NDc1MTcwNDl9.8A0m6guR74FgnDz7aHAZBh-HqBAtsWlFH3Q1XnOy_RE
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVwcHUiLCJpZCI6MSwiaWF0IjoxNjQ3NTE2NTAzLCJleHAiOjE2NDc1MjAxMDN9.EsC_ypZrw-yWpHaT0JP82XhucpyfZc0MlS1UTq2-Kds
 
 {
   "sport": "Skiing",
