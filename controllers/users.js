@@ -2,8 +2,9 @@ const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
 const config = require('../utils/config')
 
-//Ota mallia blogilistan totetuksesta, vaatii bcryptin yms.
-// Tee loppuun, ja lisää käyttäjä jonka jälkeen testaa rest clientilla exercise post request
+usersRouter.get('/', (req, res) => {
+  //passwordhashia ei lähetetä responsessa
+})
 
 usersRouter.post('/', async (req, res) => {
 
