@@ -1,0 +1,7 @@
+POST https://localhost:3001/api/exercises/
+content-type: application/json
+
+{
+  "id": 1,
+  "user_id": 1
+}

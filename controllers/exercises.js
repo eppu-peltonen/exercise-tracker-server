@@ -1,23 +1,29 @@
 const exerciseRouter = require('express').Router()
-const { Pool } = require('pg')
+const config = require('../utils/config')
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {rejectUnauthorized: false}
+exerciseRouter.get('/', (req, res) => {
+  config.pool.query('SELECT * FROM exercises', (error, results) => {
+    if (error) {
+      throw error
+    }
+    res.status(200).json(results.rows)
+  })
 })
 
-exerciseRouter.get('/db', async (req, res) => {
-  try {
-    const client = await pool.connect()
-    const result = await client.query('SELECT * FROM test_table')
-    const results = {'results': (result) ? result.rows : null}
-    res.send(results)
-    client.release()
-  } catch (err) {
-    console.error(err)
-    res.send('Error ' + err)
-  }
-})
 
+exerciseRouter.post('/', (req, res) => {
+  const {user_id, sport, start_time, duration, distance, avg_hr} = req.body
+
+  config.pool.query(
+    'INSERT INTO excercises (user_id, sport, start_time, duration, distance, avg_hr) VALUES ($1, $2, $3, $4, $5, $6)', 
+    [user_id, sport, start_time, duration, distance, avg_hr],
+    (error) => {
+      if (error) {
+        throw error
+      }
+      res.status(201).json({status: 'success', message: 'Exercise added.'})
+    }
+  )
+})
 
 module.exports = exerciseRouter
