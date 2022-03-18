@@ -3,12 +3,12 @@ const usersRouter = require('express').Router()
 const config = require('../utils/config')
 
 usersRouter.get('/', (req, res) => {
-  //passwordhashia ei lähetetä responsessa
+  //salasanan tiivistettä (passwordhash) ei lähetetä responsessa (tulee automaattisesti responseen, pitää poistaa jotenkin)
 })
 
 usersRouter.post('/', async (req, res) => {
 
-  //Salasana tulee req.bodysta ja täällä luodaan hash joka tallennetaan kantaan
+  //Salasana tulee req.bodysta ja tässä funktiossa luodaan tiiviste joka tallennetaan kantaan
   const { username, fname, lname, password } = req.body
 
   if (password === undefined) {

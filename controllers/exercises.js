@@ -11,14 +11,16 @@ const getTokenFrom = req => {
 }
 
 exerciseRouter.get('/', (req, res) => {
-  config.pool.query('SELECT * FROM exercises', (error, results) => {
+  config.pool.query(
+    "select * from exercises",
+    (error, results) => {
     if (error) {
       throw error
     }
+    console.log(results.rows[0].start_time)
     res.status(200).json(results.rows)
   })
 })
-
 
 exerciseRouter.post('/', async (req, res) => {
   const {sport, start_time, duration, distance, avg_hr} = req.body

@@ -10,7 +10,7 @@ create table exercises (
   id serial primary key,
   user_id integer references users (id),
   sport varchar(50) not null,
-  start_time timestamp without time zone not null,
+  start_time timestamptz not null,
   duration interval not null,
   distance numeric(5,1),
   avg_hr int
