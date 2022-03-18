@@ -10,7 +10,7 @@ Node.js API server for the application.
 
 `npm install` in the project root directory.
 
-`npm start` for running the server with nodemon for development.
+`npm run dev` for running the server with nodemon for development.
 
 ### API endpoints
 

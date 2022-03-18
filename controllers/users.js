@@ -2,10 +2,17 @@ const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
 const config = require('../utils/config')
 
+// Get all users
 usersRouter.get('/', (req, res) => {
-  //salasanan tiivistettä (passwordhash) ei lähetetä responsessa (tulee automaattisesti responseen, pitää poistaa jotenkin)
+  config.pool.query('select username, fname, lname from users', (error, result) => {
+    if (error) {
+      throw error
+    }
+    res.json(result.rows)
+  })
 })
 
+// Add user
 usersRouter.post('/', async (req, res) => {
 
   //Salasana tulee req.bodysta ja tässä funktiossa luodaan tiiviste joka tallennetaan kantaan
@@ -28,6 +35,7 @@ usersRouter.post('/', async (req, res) => {
       if (error) {
         throw error
       }
+      //Saved userin näyttäminen onnistuneen requestin responssa ei toimi
       const savedUser = result.rows[0]
       res.status(201).json({
         status: 'success',
