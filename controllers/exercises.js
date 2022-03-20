@@ -17,7 +17,6 @@ exerciseRouter.get('/', (req, res) => {
     if (error) {
       throw error
     }
-    console.log(results.rows[0].start_time)
     res.status(200).json(results.rows)
   })
 })

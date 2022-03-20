@@ -11,12 +11,15 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(cors())
+app.use(express.json())
 app.use(middleware.requestLogger)
 
 //Api route middlewares
 app.use('/api/exercises', exerciseRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+
 app.use(middleware.unknownEndpoint)
+app.use(middleware.errorHandler)
 
 module.exports = app
