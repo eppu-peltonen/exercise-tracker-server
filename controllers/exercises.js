@@ -10,9 +10,18 @@ const getTokenFrom = req => {
   return null
 }
 
-exerciseRouter.get('/', (req, res) => {
+// TODO lähetä kaikki käyttäjän harjoitukset
+// select * from users where user_id = decodedtoken.id
+exerciseRouter.get('/', async (req, res) => {
+  const token = getTokenFrom(req)
+  const decodedToken = jwt.verify(token, process.env.SECRET)
+  if (!token || !decodedToken.id) {
+    return res.status(401).json({error: 'token missing or invalid'})
+  }
+  //const result = await config.pool.query('select * from users where id=$1', [decodedToken.id])
+  //const user = result.rows[0]
   config.pool.query(
-    "select * from exercises",
+    'select * from exercises where user_id=$1', [decodedToken.id],
     (error, results) => {
     if (error) {
       throw error
@@ -30,7 +39,6 @@ exerciseRouter.post('/', async (req, res) => {
   }
   const result = await config.pool.query('select * from users where id=$1', [decodedToken.id])
   const user = result.rows[0]
-  console.log(user)
 
   config.pool.query(
     'INSERT INTO exercises (user_id, sport, start_time, duration, distance, avg_hr) VALUES ($1, $2, $3, $4, $5, $6)', 
