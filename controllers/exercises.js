@@ -10,18 +10,21 @@ const getTokenFrom = req => {
   return null
 }
 
-// TODO lähetä kaikki käyttäjän harjoitukset
-// select * from users where user_id = decodedtoken.id
+// Kommentoitu koodi on kirjautuneen käyttäjän harjoituksien hakemista varten
 exerciseRouter.get('/', async (req, res) => {
+
+  /*
   const token = getTokenFrom(req)
   const decodedToken = jwt.verify(token, process.env.SECRET)
   if (!token || !decodedToken.id) {
     return res.status(401).json({error: 'token missing or invalid'})
   }
-  //const result = await config.pool.query('select * from users where id=$1', [decodedToken.id])
-  //const user = result.rows[0]
+  const result = await config.pool.query('select * from users where id=$1', [decodedToken.id])
+  const user = result.rows[0]
+  */
+
   config.pool.query(
-    'select * from exercises where user_id=$1', [decodedToken.id],
+    'select * from exercises',
     (error, results) => {
     if (error) {
       throw error

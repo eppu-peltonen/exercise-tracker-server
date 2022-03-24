@@ -15,7 +15,6 @@ usersRouter.get('/', (req, res) => {
 // Add user
 usersRouter.post('/', async (req, res) => {
 
-  //Salasana tulee req.bodysta ja tässä funktiossa luodaan tiiviste joka tallennetaan kantaan
   const { username, fname, lname, password } = req.body
 
   if (password === undefined) {
@@ -35,7 +34,7 @@ usersRouter.post('/', async (req, res) => {
       if (error) {
         throw error
       }
-      //Saved userin näyttäminen onnistuneen requestin responssa ei toimi
+      //Saved userin näyttäminen responsessa ei toimi
       const savedUser = result.rows[0]
       res.status(201).json({
         status: 'success',
