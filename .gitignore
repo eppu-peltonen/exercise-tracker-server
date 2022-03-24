@@ -1,6 +1,7 @@
 node_modules/
 .env
 requests/
+init.sql
 
 #Dev notes
 NOTES.md
