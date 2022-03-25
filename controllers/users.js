@@ -4,7 +4,7 @@ const config = require('../utils/config')
 
 // Get all users
 usersRouter.get('/', (req, res) => {
-  config.pool.query('select username, fname, lname from users', (error, result) => {
+  config.pool.query('select username from users', (error, result) => {
     if (error) {
       throw error
     }
@@ -15,7 +15,7 @@ usersRouter.get('/', (req, res) => {
 // Add user
 usersRouter.post('/', async (req, res) => {
 
-  const { username, fname, lname, password } = req.body
+  const { username, password } = req.body
 
   if (password === undefined) {
     return res.status(400).json({error: 'password is missing'})
@@ -28,18 +28,16 @@ usersRouter.post('/', async (req, res) => {
   const passwordhash = await bcrypt.hash(password, saltRounds)
 
   config.pool.query(
-    'INSERT INTO users (username, fname, lname, passwordhash) VALUES ($1, $2, $3, $4)',
-    [username, fname, lname, passwordhash],
+    'INSERT INTO users (username, passwordhash) VALUES ($1, $2)',
+    [username, passwordhash],
     (error, result) => {
       if (error) {
-        throw error
+        return res.json({error: `username ${username} already registered`})
       }
-      //Saved userin näyttäminen responsessa ei toimi
-      const savedUser = result.rows[0]
       res.status(201).json({
         status: 'success',
-        message: 'User added.',
-        user: savedUser})
+        message: 'User added.'
+      })
     }
   )
 })
