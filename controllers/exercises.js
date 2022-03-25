@@ -10,9 +10,11 @@ const getTokenFrom = req => {
   return null
 }
 
-exerciseRouter.get('/', async (req, res) => {
+// Get exercises by user id
+exerciseRouter.get('/:id', async (req, res) => {
+  const id = req.params.id
   config.pool.query(
-    'select * from exercises',
+    'select * from exercises where user_id=$1', [id],
     (error, results) => {
     if (error) {
       throw error
