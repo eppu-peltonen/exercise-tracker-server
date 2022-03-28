@@ -50,7 +50,10 @@ exerciseRouter.post('/', async (req, res) => {
       if (error) {
         res.status(400).json({error: error})
       }
-      res.status(201).json({status: 'success', message: 'Exercise added.'})
+      res.status(201).json({
+        status: "Success",
+        message: "Exercise added"
+      })
     }
   )
 })

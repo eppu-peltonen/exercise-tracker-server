@@ -4,11 +4,11 @@ const config = require('../utils/config')
 
 // Get all users
 usersRouter.get('/', (req, res) => {
-  config.pool.query('select username from users', (error, result) => {
+  config.pool.query('select id, username from users', (error, result) => {
     if (error) {
       throw error
     }
-    res.json(result.rows)
+    res.status(200).json(result.rows)
   })
 })
 
@@ -35,8 +35,8 @@ usersRouter.post('/', async (req, res) => {
         return res.json({error: `username ${username} already registered`})
       }
       res.status(201).json({
-        status: 'success',
-        message: 'User added.'
+        status: "Success",
+        message: "User added"
       })
     }
   )
