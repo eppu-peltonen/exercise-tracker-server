@@ -11,7 +11,7 @@ const getTokenFrom = req => {
 }
 
 exerciseRouter.get('/', (req, res) => {
-  config.pool.query('select * from exercises',
+  config.pool.query("select id, user_id, sport, start_time, to_char(duration::interval, 'HH24:MI:SS') as duration, distance, avg_hr from exercises;",
   (error, results) => {
     if (error) {
       throw error
@@ -48,7 +48,7 @@ exerciseRouter.post('/', async (req, res) => {
     [user.id, sport, start_time, duration, distance, avg_hr],
     (error) => {
       if (error) {
-        throw error
+        res.status(400).json({error: error})
       }
       res.status(201).json({status: 'success', message: 'Exercise added.'})
     }
