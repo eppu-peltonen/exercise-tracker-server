@@ -150,6 +150,11 @@ create table exercises (
 
 `POST /api/users`
 
+#### Arguments
+
+- `"username":string`
+- `"password":string`
+
 #### Response
 
 - `201 Created` on success
@@ -168,6 +173,11 @@ create table exercises (
 #### Definition
 
 `POST /api/login`
+
+#### Arguments
+
+- `"username":string`
+- `"password":string`
 
 #### Response
 
