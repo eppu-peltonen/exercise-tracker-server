@@ -15,24 +15,24 @@ usersRouter.get('/', (req, res) => {
 // Add user
 usersRouter.post('/', async (req, res) => {
 
-  const { username, password } = req.body
+  const { newUser, newPassword } = req.body
 
-  if (password === undefined) {
+  if (newPassword === undefined) {
     return res.status(400).json({error: 'password is missing'})
   }
-  if (password.length < 4) {
+  if (newPassword.length < 4) {
     return res.status(400).json({error: 'password is too short'})
   }
 
   const saltRounds = 10
-  const passwordhash = await bcrypt.hash(password, saltRounds)
+  const passwordhash = await bcrypt.hash(newPassword, saltRounds)
 
   config.pool.query(
     'INSERT INTO users (username, passwordhash) VALUES ($1, $2)',
-    [username, passwordhash],
+    [newUser, passwordhash],
     (error, result) => {
       if (error) {
-        return res.json({error: `username ${username} already registered`})
+        return res.json({error: error})
       }
       res.status(201).json({
         status: "Success",
