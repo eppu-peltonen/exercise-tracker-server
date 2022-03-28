@@ -13,13 +13,15 @@ The project uses PostgreSQL database so first install the database locally or us
 The server establishes database connections for development and production.
 
 Database connection for local PostgreSQL database is given in `.env` file with following content:
-`DB_USER=your_user`
-`DB_PASSWORD=your_password`
-`DB_HOST=LOCALHOST` Localhost for local DB.
-`DB_PORT=5432` PostgreSQL default port.
-`DB_DATABASE=your_db_name`
+
+- `DB_USER=your_user`
+- `DB_PASSWORD=your_password`
+- `DB_HOST=LOCALHOST` Localhost for local DB.
+- `DB_PORT=5432` PostgreSQL default port.
+- `DB_DATABASE=your_db_name`
 
 Database connection for production is given in `.env` file with following content:
+
 `DATABASE_URL=your_postgresql_db_url`
 
 You can configure both connections if you wish.
