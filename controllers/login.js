@@ -7,7 +7,7 @@ loginRouter.post('/', async (req, res ) => {
   const body = req.body
   const result = await config.pool.query('select * from users where username=$1', [body.username])
   const user = result.rows[0]
-  const passwordCorrect = user === null
+  const passwordCorrect = user === undefined
     ? false
     : await bcrypt.compare(body.password, user.passwordhash)
   
