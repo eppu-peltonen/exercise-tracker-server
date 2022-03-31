@@ -11,7 +11,7 @@ const getTokenFrom = req => {
 }
 
 exerciseRouter.get('/', (req, res) => {
-  config.pool.query("select id, user_id, sport, start_time, to_char(duration::interval, 'HH24:MI:SS') as duration, distance, avg_hr from exercises;",
+  config.pool.query("select id, user_id, sport, start_time, to_char(duration, 'HH24:MI:SS') as duration, distance, avg_hr from exercises;",
   (error, results) => {
     if (error) {
       throw error
