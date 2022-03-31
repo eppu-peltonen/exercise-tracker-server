@@ -1,5 +1,7 @@
 # Exercise tracker
 
+Live: <https://evening-sierra-51700.herokuapp.com/>
+
 Node.js API server for the exercise tracker application.
 
 ## Setup
