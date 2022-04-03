@@ -4,6 +4,12 @@ Live: <https://evening-sierra-51700.herokuapp.com/>
 
 Node.js API server for the exercise tracker application.
 
+![login](./screenshots/tracker-login.png)
+![add new exercise](./screenshots/tracker-1.png)
+![exercise list](./screenshots/tracker-2.png)
+![exercise data](./screenshots/tracker-3.png)
+![exercise graphs](./screenshots/tracker-4.png)
+
 ## Setup
 
 The server needs `.env` file to store environment variables.
