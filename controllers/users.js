@@ -17,11 +17,17 @@ usersRouter.post('/', async (req, res) => {
 
   const { newUser, newPassword } = req.body
 
-  if (newPassword === undefined) {
+  if (newPassword === undefined || newPassword === null) {
     return res.status(400).json({error: 'password is missing'})
   }
   if (newPassword.length < 4) {
     return res.status(400).json({error: 'password is too short'})
+  }
+
+  //Check if user exists
+  const result = await config.pool.query('select * from users where username=$1', [newUser])
+  if (result.rows.length > 0) {
+    return res.status(400).json({error: 'user already exists'})
   }
 
   const saltRounds = 10
