@@ -41,7 +41,6 @@ usersRouter.post('/', async (req, res) => {
         return res.json({error: error})
       }
       res.status(201).json({
-        status: "Success",
         message: "User added"
       })
     }
