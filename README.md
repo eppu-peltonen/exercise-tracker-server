@@ -4,10 +4,26 @@ Live: <https://evening-sierra-51700.herokuapp.com/>
 
 Node.js API server for the exercise tracker application.
 
+## Client screenshots
+
+Login:
+
 ![login](./screenshots/tracker-login.png)
+
+Add exercise -form:
+
 ![add new exercise](./screenshots/tracker-1.png)
+
+Exercise list:
+
 ![exercise list](./screenshots/tracker-2.png)
+
+Exercise data processing:
+
 ![exercise data](./screenshots/tracker-3.png)
+
+Exercise graphs:
+
 ![exercise graphs](./screenshots/tracker-4.png)
 
 ## Setup
