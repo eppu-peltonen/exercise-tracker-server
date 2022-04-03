@@ -23,8 +23,8 @@ exerciseRouter.get('/', (req, res) => {
 // Get exercises by user id
 exerciseRouter.get('/:id', async (req, res) => {
   const id = req.params.id
-  config.pool.query(
-    'select * from exercises where user_id=$1', [id],
+  await config.pool.query(
+    "select id, user_id, sport, start_time, to_char(duration, 'HH24:MI:SS') as duration, distance, avg_hr from exercises where user_id=$1", [id],
     (error, results) => {
     if (error) {
       throw error
