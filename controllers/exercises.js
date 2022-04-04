@@ -82,10 +82,7 @@ exerciseRouter.delete('/:id', async (req, res) => {
 
   try {
     await config.pool.query('DELETE FROM exercises WHERE id=$1 AND user_id=$2', [id, user.id])
-    return res.status(200).json({
-      status: "Success",
-      message: "Exercise deleted"
-    })
+    return res.status(200).send("Exercise deleted")
   } catch(error) {
     return error
   }
