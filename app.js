@@ -13,7 +13,10 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(express.static('build'))
 app.use(express.json())
-app.use(middleware.requestLogger)
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(middleware.requestLogger)
+}
 
 //Api route middlewares
 app.use('/api/exercises', exerciseRouter)
