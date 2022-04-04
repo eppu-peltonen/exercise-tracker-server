@@ -136,14 +136,7 @@ create table exercises (
 
 - `201 Created` on success
 
-```json
-[
-  {
-    "status": "Success",
-    "message": "Exercise added"
-  }
-]
-```
+`Exercise added`
 
 ### List users
 
@@ -183,14 +176,7 @@ create table exercises (
 
 - `201 Created` on success
 
-```json
-[
-  {
-    "status": "Success",
-    "message": "User added"
-  }
-]
-```
+`Registration completed`
 
 ### Login
 
