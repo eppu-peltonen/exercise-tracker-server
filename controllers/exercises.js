@@ -47,7 +47,7 @@ exerciseRouter.post('/', async (req, res) => {
   const user = result.rows[0]
 
   try {
-    const { rows } = await config.pool.query(
+    await config.pool.query(
       'INSERT INTO exercises (user_id, sport, start_time, duration, distance, avg_hr) VALUES ($1, $2, $3, $4, $5, $6)', 
       [user.id, sport, start_time, duration, distance, avg_hr]
     )
