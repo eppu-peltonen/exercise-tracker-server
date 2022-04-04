@@ -47,14 +47,11 @@ exerciseRouter.post('/', async (req, res) => {
   const user = result.rows[0]
 
   try {
-    await config.pool.query(
+    const { rows } = await config.pool.query(
       'INSERT INTO exercises (user_id, sport, start_time, duration, distance, avg_hr) VALUES ($1, $2, $3, $4, $5, $6)', 
       [user.id, sport, start_time, duration, distance, avg_hr]
     )
-    return res.status(201).json({
-      status: "Success",
-      message: "Exercise added"
-    })
+    res.status(201).send('Exercise added')
   } catch(error) {
     return error
   }
