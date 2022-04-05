@@ -81,7 +81,7 @@ create table exercises (
 
 `npm run dev` for running the server with nodemon for development.
 
-`npm start` for running the server in development. Notice that this will connect to your database configured in the `DATABASE_URL` environment variable
+`npm start` for running the server in production. Notice that this will connect to your database configured in the `DATABASE_URL` environment variable
 
 ## API endpoints
 
