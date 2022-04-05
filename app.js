@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(middleware.requestLogger)
 }
 
-//Api route middlewares
+//Routes
 app.use('/api/exercises', exerciseRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
