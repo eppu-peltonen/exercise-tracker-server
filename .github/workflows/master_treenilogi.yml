@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'treenilogi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_31645CB2864941A1BF83B465EB747B65 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DB4E641632624E54B9419205C8C3AF87 }}
           package: .
